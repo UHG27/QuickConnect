@@ -1,14 +1,7 @@
 from django.db import models
+from apps.empresa.models import Empresa
 
-class Empresa(models.Model):
-    nombre = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='empresas/', blank=True, null=True)
-    descripcion = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.nombre
-
-class Vacante(models.Model):
+class Vacantes(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     puesto = models.CharField(max_length=100)
     salario = models.CharField(max_length=50, blank=True)
